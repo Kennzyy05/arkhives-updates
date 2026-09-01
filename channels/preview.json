@@ -2,11 +2,11 @@
   "schema": 1,
   "channel": "preview",
   "available": false,
-  "version": "7.8.47",
-  "minimum_version": "7.8.47",
+  "version": "7.8.48",
+  "minimum_version": "7.8.48",
   "architecture": "amd64",
   "patch_url": "",
   "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases",
   "sha256": "",
-  "notes": "Preview channel initialized. No preview build is currently published."
+  "notes": "Preview channel is ready. No preview update newer than 7.8.48 is currently published."
 }
