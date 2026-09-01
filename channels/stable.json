@@ -1,12 +1,12 @@
 {
   "schema": 1,
   "channel": "stable",
-  "available": false,
-  "version": "7.8.48",
+  "available": true,
+  "version": "7.8.49",
   "minimum_version": "7.8.48",
   "architecture": "amd64",
-  "patch_url": "",
-  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases",
-  "sha256": "",
-  "notes": "ARKhives 7.8.48 is the online-updater bootstrap baseline. No newer stable update is currently published."
+  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v7.8.49/ARKhives_v7.8.49_ONLINE_UPDATE_VALIDATION_AMD64.arkenpatch",
+  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v7.8.49",
+  "sha256": "ed8ca10f761730268e621ad3b4a26974ac66c8e87e2c765ca1ceb1564e13447a",
+  "notes": "First real online-update validation release with clear updater status, diagnostics, and persistent logging visibility."
 }
