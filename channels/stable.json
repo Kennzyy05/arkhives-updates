@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "channel": "stable",
+  "available": false,
+  "version": "7.8.47",
+  "minimum_version": "7.8.47",
+  "architecture": "amd64",
+  "patch_url": "",
+  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases",
+  "sha256": "",
+  "notes": "Stable feed initialized. The first online-delivered patch will be published here."
+}
