@@ -2,11 +2,11 @@
   "schema": 1,
   "channel": "stable",
   "available": true,
-  "version": "7.8.49",
-  "minimum_version": "7.8.48",
+  "version": "7.8.50",
+  "minimum_version": "7.8.49",
   "architecture": "amd64",
-  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v7.8.49/ARKhives_v7.8.49_ONLINE_UPDATE_VALIDATION_AMD64.arkenpatch",
-  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v7.8.49",
-  "sha256": "ed8ca10f761730268e621ad3b4a26974ac66c8e87e2c765ca1ceb1564e13447a",
-  "notes": "First real online-update validation release with clear updater status, diagnostics, and persistent logging visibility."
+  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v7.8.50/ARKhives_v7.8.50_ONLINE_UPDATE_ACTION_HOTFIX_AMD64.arkenpatch",
+  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v7.8.50",
+  "sha256": "5aa98cf0e28d8eeab8bd5b0a2638487fb827d7e60a7ac3851ea74f8ab497be48",
+  "notes": "Online updater action hotfix with visible download/install progress, improved GitHub patch download timeout, and surfaced updater errors."
 }
