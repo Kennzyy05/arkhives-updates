@@ -2,11 +2,11 @@
   "schema": 1,
   "channel": "stable",
   "available": true,
-  "version": "7.8.56",
-  "minimum_version": "7.8.55",
+  "version": "7.8.57",
+  "minimum_version": "7.8.56",
   "architecture": "amd64",
-  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v7.8.56/ARKhives_v7.8.56_SHARED_UPDATE_SURFACE_AMD64.arkenpatch",
-  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v7.8.56",
-  "sha256": "1964e764aad949b4230580eb08f28d0efa6fd8a3e3e9167e8e80341aeb88f0d4",
-  "notes": "ARKhives 7.8.56 update."
+  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v7.8.57/ARKhives_v7.8.57_MOTION_INTERACTION_OVERHAUL_AMD64.arkenpatch",
+  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v7.8.57",
+  "sha256": "29569918d53b7a8bb97c14084c88866be0350febec184e9c9181a0d94e42b423",
+  "notes": "ARKhives 7.8.57 update."
 }
