@@ -15,10 +15,6 @@ function Fail([string]$Message) {
     exit 1
 }
 
-# Windows PowerShell 5.1 can turn stderr from a native program into a
-# terminating NativeCommandError when ErrorActionPreference is Stop.
-# GitHub CLI legitimately writes messages such as "release not found"
-# to stderr, so every gh invocation is isolated here and checked by exit code.
 function Invoke-Gh {
     param(
         [Parameter(Mandatory = $true)]
@@ -117,44 +113,64 @@ Write-Host "  SHA-256:      $Sha256"
 Write-Host "  Channel:      $Channel"
 Write-Host ""
 
-$releaseCheck = Invoke-Gh -Arguments @("release", "view", $Tag, "--repo", $Repository)
-if ($releaseCheck.ExitCode -eq 0) {
-    Fail "Release $Tag already exists. Refusing to replace an existing release automatically."
+# Look up the release directly through the GitHub API.
+# If it already exists from a previous partial run, verify it and resume safely.
+$releaseLookup = Invoke-Gh -Arguments @("api", "repos/$Repository/releases/tags/$Tag")
+$releaseJson = $null
+
+if ($releaseLookup.ExitCode -eq 0) {
+    try {
+        $releaseJson = $releaseLookup.Output | ConvertFrom-Json
+    }
+    catch {
+        Fail "GitHub returned invalid metadata for existing release $Tag."
+    }
+
+    $existingAsset = $releaseJson.assets | Where-Object { $_.name -eq $FileName } | Select-Object -First 1
+    if ($null -eq $existingAsset) {
+        Fail "Release $Tag already exists, but it does not contain '$FileName'. Refusing to modify the release automatically."
+    }
+
+    $existingDigest = [string]$existingAsset.digest
+    if ($existingDigest -and $existingDigest.ToLowerInvariant() -ne ("sha256:" + $Sha256)) {
+        Fail "Release $Tag already exists, but its uploaded asset digest does not match this patch."
+    }
+
+    Write-Host "Release $Tag already exists with the matching patch - resuming feed publication." -ForegroundColor Green
 }
+else {
+    $lookupMessage = ($releaseLookup.Error + [Environment]::NewLine + $releaseLookup.Output).Trim()
+    if ($lookupMessage -and $lookupMessage -notmatch "(?i)not found|404") {
+        Fail "Could not safely check whether $Tag exists: $lookupMessage"
+    }
 
-# A missing release is the normal/desired state for a new update.
-$releaseCheckMessage = ($releaseCheck.Error + [Environment]::NewLine + $releaseCheck.Output).Trim()
-if ($releaseCheckMessage -and
-    $releaseCheckMessage -notmatch "(?i)release not found|not found|404") {
-    Fail "Could not safely check whether $Tag already exists: $releaseCheckMessage"
-}
+    Write-Host "Release $Tag does not exist yet - ready to create it." -ForegroundColor Green
+    Write-Host "Creating GitHub Release $Tag and uploading the signed patch..." -ForegroundColor Yellow
 
-Write-Host "Release $Tag does not exist yet - ready to create it." -ForegroundColor Green
-Write-Host "Creating GitHub Release $Tag and uploading the signed patch..." -ForegroundColor Yellow
+    $create = Invoke-Gh -Arguments @(
+        "release", "create", $Tag, $PatchPath,
+        "--repo", $Repository,
+        "--target", "main",
+        "--title", "ARKhives $Tag",
+        "--notes", $Notes
+    )
 
-$create = Invoke-Gh -Arguments @(
-    "release", "create", $Tag, $PatchPath,
-    "--repo", $Repository,
-    "--target", "main",
-    "--title", "ARKhives $Tag",
-    "--notes", $Notes
-)
+    if ($create.ExitCode -ne 0) {
+        $detail = ($create.Error + [Environment]::NewLine + $create.Output).Trim()
+        Fail "GitHub Release creation/upload failed. Feed files were NOT changed.$([Environment]::NewLine)$detail"
+    }
 
-if ($create.ExitCode -ne 0) {
-    $detail = ($create.Error + [Environment]::NewLine + $create.Output).Trim()
-    Fail "GitHub Release creation/upload failed. Feed files were NOT changed.$([Environment]::NewLine)$detail"
-}
+    $verifyRelease = Invoke-Gh -Arguments @("api", "repos/$Repository/releases/tags/$Tag")
+    if ($verifyRelease.ExitCode -ne 0) {
+        Fail "Release was created, but verification through GitHub API failed. Feed files were NOT changed."
+    }
 
-$releaseApi = Invoke-Gh -Arguments @("api", "repos/$Repository/releases/tags/$Tag")
-if ($releaseApi.ExitCode -ne 0) {
-    Fail "Release was created, but verification through GitHub API failed. Feed files were NOT changed."
-}
-
-try {
-    $releaseJson = $releaseApi.Output | ConvertFrom-Json
-}
-catch {
-    Fail "GitHub returned invalid release metadata. Feed files were NOT changed."
+    try {
+        $releaseJson = $verifyRelease.Output | ConvertFrom-Json
+    }
+    catch {
+        Fail "GitHub returned invalid release metadata. Feed files were NOT changed."
+    }
 }
 
 $asset = $releaseJson.assets | Where-Object { $_.name -eq $FileName } | Select-Object -First 1
@@ -187,9 +203,12 @@ $FeedJson = ($feed | ConvertTo-Json -Depth 5) + [Environment]::NewLine
 $FeedBase64 = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($FeedJson))
 
 function Update-RepoFile([string]$Path, [string]$Message) {
-    $read = Invoke-Gh -Arguments @("api", "repos/$Repository/contents/$Path?ref=main")
+    # main is the repository default branch, so no ?ref=main query string is needed.
+    # This avoids Windows gh/PowerShell endpoint parsing issues.
+    $read = Invoke-Gh -Arguments @("api", "repos/$Repository/contents/$Path")
     if ($read.ExitCode -ne 0) {
-        Fail "Could not read the current GitHub file $Path. Release is published, but the previous feed remains active."
+        $detail = ($read.Error + [Environment]::NewLine + $read.Output).Trim()
+        Fail "Could not read the current GitHub file $Path. Release is published, but the previous feed remains active.$([Environment]::NewLine)$detail"
     }
 
     try {
@@ -201,6 +220,20 @@ function Update-RepoFile([string]$Path, [string]$Message) {
 
     if (-not $current.sha) {
         Fail "Could not read current SHA for $Path. Release is published, but the previous feed remains active."
+    }
+
+    # Make reruns idempotent: if the feed already has exactly the intended content,
+    # do not attempt another GitHub commit.
+    try {
+        $currentBytes = [Convert]::FromBase64String(([string]$current.content -replace "\s", ""))
+        $currentText = [Text.Encoding]::UTF8.GetString($currentBytes)
+        if ($currentText -eq $FeedJson) {
+            Write-Host "$Path is already current." -ForegroundColor Green
+            return
+        }
+    }
+    catch {
+        # If decoding the existing file fails, continue with the normal safe update path.
     }
 
     $write = Invoke-Gh -Arguments @(
@@ -217,6 +250,8 @@ function Update-RepoFile([string]$Path, [string]$Message) {
         $detail = ($write.Error + [Environment]::NewLine + $write.Output).Trim()
         Fail "Release is published, but updating $Path failed. The previous feed remains active.$([Environment]::NewLine)$detail"
     }
+
+    Write-Host "$Path updated successfully." -ForegroundColor Green
 }
 
 if ($Channel -eq "stable") {
