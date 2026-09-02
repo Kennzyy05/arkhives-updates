@@ -1,0 +1,46 @@
+name: Validate update feeds
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - latest.json
+      - channels/*.json
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate feed structure
+        shell: pwsh
+        run: |
+          $latest = Get-Content -Raw latest.json | ConvertFrom-Json
+          $stable = Get-Content -Raw channels/stable.json | ConvertFrom-Json
+          $preview = Get-Content -Raw channels/preview.json | ConvertFrom-Json
+
+          foreach ($feed in @($latest, $stable, $preview)) {
+            if ($feed.schema -ne 1) { throw "Unsupported schema" }
+            if ($feed.architecture -ne "amd64") { throw "Unexpected architecture" }
+            if ([string]::IsNullOrWhiteSpace([string]$feed.version)) { throw "Missing version" }
+            if ([string]::IsNullOrWhiteSpace([string]$feed.minimum_version)) { throw "Missing minimum_version" }
+          }
+
+          if ($latest.version -ne $stable.version) { throw "latest.json does not mirror stable version" }
+          if ($latest.patch_url -ne $stable.patch_url) { throw "latest.json does not mirror stable patch_url" }
+          if ($latest.sha256 -ne $stable.sha256) { throw "latest.json does not mirror stable sha256" }
+
+          if ($stable.available) {
+            if ($stable.patch_url -notmatch '^https://github\.com/Kennzyy05/arkhives-updates/releases/download/') {
+              throw "Stable patch_url is not an approved ARKhives GitHub Release URL"
+            }
+            if ($stable.sha256 -notmatch '^[0-9a-fA-F]{64}$') {
+              throw "Stable SHA-256 is invalid"
+            }
+          }
