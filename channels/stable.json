@@ -2,11 +2,11 @@
   "schema": 1,
   "channel": "stable",
   "available": true,
-  "version": "7.8.51",
-  "minimum_version": "7.8.50",
+  "version": "7.8.52",
+  "minimum_version": "7.8.51",
   "architecture": "amd64",
-  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v7.8.51/ARKhives_v7.8.51_ONLINE_UPDATE_DETECTION_HOTFIX_AMD64.1.arkenpatch",
-  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v7.8.51",
-  "sha256": "f4648d23b4fe4595fd05c4141adc17a33205367e582948e4c47ebb5923bbfa09",
-  "notes": "Online update detection hotfix with cache-busting feed requests, no-cache headers, and visible Checking for updates status."
+  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v7.8.52/ARKhives_v7.8.52_ONLINE_UPDATE_CACHE_HARDENING_AMD64.arkenpatch",
+  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v7.8.52",
+  "sha256": "8f0c60acc9246b19900a0995f03ee2212435ddecb1a20010659e8440d20e0c4d",
+  "notes": "Online updater cache hardening with cache-busted feed checks, no-store request/response handling, and clearer update-check state."
 }
