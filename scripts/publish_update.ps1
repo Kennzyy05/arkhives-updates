@@ -15,6 +15,39 @@ function Fail([string]$Message) {
     exit 1
 }
 
+# Windows PowerShell 5.1 can turn stderr from a native program into a
+# terminating NativeCommandError when ErrorActionPreference is Stop.
+# GitHub CLI legitimately writes messages such as "release not found"
+# to stderr, so every gh invocation is isolated here and checked by exit code.
+function Invoke-Gh {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string[]]$Arguments
+    )
+
+    $oldPreference = $ErrorActionPreference
+    $errFile = [System.IO.Path]::GetTempFileName()
+    try {
+        $ErrorActionPreference = "Continue"
+        $output = & gh @Arguments 2> $errFile
+        $exitCode = $LASTEXITCODE
+        $stderr = ""
+        if (Test-Path -LiteralPath $errFile) {
+            $stderr = (Get-Content -LiteralPath $errFile -Raw -ErrorAction SilentlyContinue)
+        }
+    }
+    finally {
+        $ErrorActionPreference = $oldPreference
+        Remove-Item -LiteralPath $errFile -Force -ErrorAction SilentlyContinue
+    }
+
+    [pscustomobject]@{
+        ExitCode = $exitCode
+        Output   = (($output | ForEach-Object { [string]$_ }) -join [Environment]::NewLine)
+        Error    = [string]$stderr
+    }
+}
+
 if (-not (Test-Path -LiteralPath $PatchPath -PathType Leaf)) {
     Fail "Patch file not found: $PatchPath"
 }
@@ -27,12 +60,13 @@ if (-not $FileName.EndsWith(".arkenpatch", [System.StringComparison]::OrdinalIgn
 }
 
 if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {
-    Fail "GitHub CLI (gh) is not installed. Install it once, then run: gh auth login"
+    Fail "GitHub CLI (gh) is not installed or is not in PATH."
 }
 
-& gh auth status *> $null
-if ($LASTEXITCODE -ne 0) {
-    Fail "GitHub CLI is not authenticated. Run: gh auth login"
+$auth = Invoke-Gh -Arguments @("auth", "status")
+if ($auth.ExitCode -ne 0) {
+    Fail ("GitHub CLI is not authenticated. Run: gh auth login" +
+          $(if ($auth.Error) { [Environment]::NewLine + $auth.Error.Trim() } else { "" }))
 }
 
 Add-Type -AssemblyName System.IO.Compression.FileSystem
@@ -83,30 +117,47 @@ Write-Host "  SHA-256:      $Sha256"
 Write-Host "  Channel:      $Channel"
 Write-Host ""
 
-& gh release view $Tag --repo $Repository *> $null
-if ($LASTEXITCODE -eq 0) {
+$releaseCheck = Invoke-Gh -Arguments @("release", "view", $Tag, "--repo", $Repository)
+if ($releaseCheck.ExitCode -eq 0) {
     Fail "Release $Tag already exists. Refusing to replace an existing release automatically."
 }
 
-$ReleaseTitle = "ARKhives $Tag"
+# A missing release is the normal/desired state for a new update.
+$releaseCheckMessage = ($releaseCheck.Error + [Environment]::NewLine + $releaseCheck.Output).Trim()
+if ($releaseCheckMessage -and
+    $releaseCheckMessage -notmatch "(?i)release not found|not found|404") {
+    Fail "Could not safely check whether $Tag already exists: $releaseCheckMessage"
+}
+
+Write-Host "Release $Tag does not exist yet - ready to create it." -ForegroundColor Green
 Write-Host "Creating GitHub Release $Tag and uploading the signed patch..." -ForegroundColor Yellow
 
-$releaseArgs = @(
+$create = Invoke-Gh -Arguments @(
     "release", "create", $Tag, $PatchPath,
     "--repo", $Repository,
     "--target", "main",
-    "--title", $ReleaseTitle,
+    "--title", "ARKhives $Tag",
     "--notes", $Notes
 )
-& gh @releaseArgs
 
-if ($LASTEXITCODE -ne 0) {
-    Fail "GitHub Release creation/upload failed. Feed files were NOT changed."
+if ($create.ExitCode -ne 0) {
+    $detail = ($create.Error + [Environment]::NewLine + $create.Output).Trim()
+    Fail "GitHub Release creation/upload failed. Feed files were NOT changed.$([Environment]::NewLine)$detail"
 }
 
-$releaseJson = (& gh api "repos/$Repository/releases/tags/$Tag") | ConvertFrom-Json
-$asset = $releaseJson.assets | Where-Object { $_.name -eq $FileName } | Select-Object -First 1
+$releaseApi = Invoke-Gh -Arguments @("api", "repos/$Repository/releases/tags/$Tag")
+if ($releaseApi.ExitCode -ne 0) {
+    Fail "Release was created, but verification through GitHub API failed. Feed files were NOT changed."
+}
 
+try {
+    $releaseJson = $releaseApi.Output | ConvertFrom-Json
+}
+catch {
+    Fail "GitHub returned invalid release metadata. Feed files were NOT changed."
+}
+
+$asset = $releaseJson.assets | Where-Object { $_.name -eq $FileName } | Select-Object -First 1
 if ($null -eq $asset) {
     Fail "Release exists, but uploaded asset '$FileName' was not found. Feed files were NOT changed."
 }
@@ -136,12 +187,23 @@ $FeedJson = ($feed | ConvertTo-Json -Depth 5) + [Environment]::NewLine
 $FeedBase64 = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($FeedJson))
 
 function Update-RepoFile([string]$Path, [string]$Message) {
-    $current = (& gh api "repos/$Repository/contents/$Path?ref=main") | ConvertFrom-Json
-    if (-not $current.sha) {
-        Fail "Could not read current SHA for $Path."
+    $read = Invoke-Gh -Arguments @("api", "repos/$Repository/contents/$Path?ref=main")
+    if ($read.ExitCode -ne 0) {
+        Fail "Could not read the current GitHub file $Path. Release is published, but the previous feed remains active."
     }
 
-    $apiArgs = @(
+    try {
+        $current = $read.Output | ConvertFrom-Json
+    }
+    catch {
+        Fail "Could not parse GitHub metadata for $Path. Release is published, but the previous feed remains active."
+    }
+
+    if (-not $current.sha) {
+        Fail "Could not read current SHA for $Path. Release is published, but the previous feed remains active."
+    }
+
+    $write = Invoke-Gh -Arguments @(
         "api",
         "--method", "PUT",
         "repos/$Repository/contents/$Path",
@@ -150,10 +212,10 @@ function Update-RepoFile([string]$Path, [string]$Message) {
         "-f", "sha=$($current.sha)",
         "-f", "branch=main"
     )
-    & gh @apiArgs *> $null
 
-    if ($LASTEXITCODE -ne 0) {
-        Fail "Release is published, but updating $Path failed. The previous feed remains active."
+    if ($write.ExitCode -ne 0) {
+        $detail = ($write.Error + [Environment]::NewLine + $write.Output).Trim()
+        Fail "Release is published, but updating $Path failed. The previous feed remains active.$([Environment]::NewLine)$detail"
     }
 }
 
