@@ -2,11 +2,11 @@
   "schema": 1,
   "channel": "stable",
   "available": true,
-  "version": "7.8.52",
-  "minimum_version": "7.8.51",
+  "version": "7.8.54",
+  "minimum_version": "7.8.53",
   "architecture": "amd64",
-  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v7.8.52/ARKhives_v7.8.52_ONLINE_UPDATE_CACHE_HARDENING_AMD64.arkenpatch",
-  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v7.8.52",
-  "sha256": "8f0c60acc9246b19900a0995f03ee2212435ddecb1a20010659e8440d20e0c4d",
-  "notes": "Online updater cache hardening with cache-busted feed checks, no-store request/response handling, and clearer update-check state."
+  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v7.8.54/ARKhives_v7.8.54_ONLINE_INSTALL_E2E_TEST_AMD64.arkenpatch",
+  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v7.8.54",
+  "sha256": "ff7a3882619c7a35db08812898437a45c16d0a0d0495805607166c71af4d3096",
+  "notes": "End-to-end online install test release for the repaired Download & Install action."
 }
