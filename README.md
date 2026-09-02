@@ -4,13 +4,13 @@ Public update-feed repository for the ARKhives Windows desktop application.
 
 ## Purpose
 
-This repository publishes update metadata for ARKhives. The application checks the JSON feed over HTTPS, downloads the referenced signed `.arkenpatch`, validates it with the Ed25519 public key already embedded in ARKhives, then installs and relaunches.
+This repository publishes update metadata for ARKhives. The application checks the JSON feed over HTTPS, downloads the referenced signed .arkenpatch, validates it with the Ed25519 public key already embedded in ARKhives, then installs and relaunches.
 
 ## Channels
 
-- Stable: `channels/stable.json`
-- Preview: `channels/preview.json`
-- Convenience alias: `latest.json`
+- Stable: channels/stable.json
+- Preview: channels/preview.json
+- Convenience alias: latest.json
 
 ## Security
 
@@ -20,9 +20,10 @@ Trust is decided locally by ARKhives. A downloaded update is installed only afte
 
 ## Publishing a release
 
-1. Build and sign the new AMD64 `.arkenpatch`.
-2. Create a GitHub Release for the version.
-3. Upload the signed `.arkenpatch` as a release asset.
-4. Update `channels/stable.json` or `channels/preview.json`.
-5. Update `latest.json` to mirror the current stable release.
-6. Never publish signing-key material.
+Publishing is now automated with scripts/publish_update.ps1.
+
+After a new .arkenpatch has been built, signed, and validated locally, run the publisher once. It reads the patch manifest, calculates SHA-256, creates the GitHub Release, uploads the patch, verifies the uploaded asset, and updates the correct feed files.
+
+See PUBLISH_AUTOMATION.md for the one-time setup and command examples.
+
+The publisher never reads or uploads the private signing key.
