@@ -2,13 +2,13 @@
   "schema": 1,
   "channel": "stable",
   "available": true,
-  "version": "8.18.1",
+  "version": "8.18.3",
   "minimum_version": "8.4.0",
   "architecture": "amd64",
-  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/untagged-ee782a2afe5d8b38656a/ARKhives_8.18.1_AMD64.arkenpatch",
-  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v8.18.1",
-  "sha256": "294b62bf9184fec868d1b3a516dbe89bb4d678d727e7352973cbc00b02d2d789",
-  "notes": "# ARKhives 8.18.1\n\nSaved AI-assisted explanations now show a small provider logo aligned with the label. Recorded GPT and Gemini contributions remain attached through editing, history and cloud publication. Mixed contributions show both logos; legacy content with no recorded provider keeps a neutral label.\n\nMobile flashcard additional information now displays the same attribution, with next/previous navigation. Logos are bundled locally for offline use. Attribution-only changes preserve earned mastery. Learning schedules, study progress and answer keys are preserved.\n\nValidation: native tests, native/WASM comparisons, Chromium/WebKit study and sync acceptance, editor/account/league regression checks, provider attribution checks and signed-update verification.\n",
+  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/untagged-72e922ccc0fd41818de1/ARKhives_8.18.3_AMD64.arkenpatch",
+  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v8.18.3",
+  "sha256": "25d12e382ddf349cbb2e0eae0b7f848da9dfcbf6b543dc18bbdcf3f2bd9d0e93",
+  "notes": "ARKhives 8.18.3 restores the study conversation and includes the prepared reviewer-card redesign.\n\n- Fixed a missing desktop AI-attribution dependency that interrupted answer rendering before the laureate conversation could mount.\n- Packaged and registered the AI label script, styles and provider images with the same device restrictions as other study assets.\n- A readable source label now survives an unavailable attribution helper, keeping saved explanations, ARKbot coaching, laureate portraits and typing indicators usable.\n- Reviewer cards use large MCQ/flashcard artwork, a subject icon beside the title and a separate Advanced Settings control. Phone layouts retain their own presentation.\n- Added a desktop package/HTTP regression check and a desktop/mobile browser regression for conversation rendering when the attribution helper is missing.\n\nQuestion text, answer keys, flashcard fronts/backs, images and personal learning progress are not modified by this UI repair. Research drafts and content publication remain separate. No physical iPhone/iPad test is claimed.\n",
   "engine_id": "8f1ebc9d9cd55a72ca96dedcfaf902930377a8bb67bbdd0025e7c56d224b82d8",
   "progress_protocol": 1
 }
