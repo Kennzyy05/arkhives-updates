@@ -5,7 +5,7 @@
   "version": "8.19.0",
   "minimum_version": "8.4.0",
   "architecture": "amd64",
-  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/untagged-f49d12c11fd87b918150/ARKhives_8.19.0_AMD64.arkenpatch",
+  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v8.19.0/ARKhives_8.19.0_AMD64.arkenpatch",
   "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v8.19.0",
   "sha256": "69a181d0871c3b996f9baae9768857a099d2bb508c4d86ee38d6c7f301755c6d",
   "notes": "ARKhives 8.19.0 adds approved Optional Related Insights to the existing laureate conversation.\n\n- Master admins can preview Antigravity draft files and approve selected insights as a batch in Content Review Studio.\n- Approved insights travel with the existing reviewer publication and are available on desktop and mobile. A saved insight opens after answering with zero Gemini calls.\n- Studying a question can show up to three approved versions. A changed question revision excludes its earlier insights.\n- Gemini 4 Hydrogen and one Gemini Flash fallback are available as an opt-in for live Study Mode AI Overview and Optional Related Insight through the Supabase AI function.\n\nAntigravity drafts await review. Activation of the model routing depends on the deployed AI function and the configured Google project's model and quota access.\n",
