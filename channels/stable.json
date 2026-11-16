@@ -2,13 +2,13 @@
   "schema": 1,
   "channel": "stable",
   "available": true,
-  "version": "8.19.1",
+  "version": "8.19.2",
   "minimum_version": "8.4.0",
   "architecture": "amd64",
-  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v8.19.1/ARKhives_8.19.1_AMD64.arkenpatch",
-  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v8.19.1",
-  "sha256": "7777365e19996814525c8f804eb8957699a18a9e74147d46542d2dfa9c0d2a7c",
-  "notes": "ARKhives 8.19.1 removes the floating loading badge from desktop and mobile.\n\nBackground network requests no longer place a floating status above dialogs. Flashcard and question images still show their own loading and retry feedback, and live AI replies keep their in-panel typing state.\n",
+  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v8.19.2/ARKhives_8.19.2_AMD64.arkenpatch",
+  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v8.19.2",
+  "sha256": "ec8ee471197d9b6dfde3bcdbb9dd66fd8fdf0e7cc948ecc58deb5e87b7ca0fff",
+  "notes": "# ARKhives 8.19.2\n\n- Sends new desktop MCQ and flashcard results to cloud sync as soon as they are saved.\n- Rechecks cloud progress when mobile returns online or to the foreground, and offers a non-destructive Sync now action.\n- Shows copy comparison only when automatic merge finds a conflict.\n- Verifies that the cloud accepts the study engine before publishing desktop updates.\n",
   "engine_id": "1421064be7ba9a4e0e2b6c0da98bd7f660fdc2382f45f8e7a0bb5ecfdc69b53b",
   "progress_protocol": 1
 }
