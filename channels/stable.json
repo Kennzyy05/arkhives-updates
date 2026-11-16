@@ -2,13 +2,13 @@
   "schema": 1,
   "channel": "stable",
   "available": true,
-  "version": "8.19.2",
+  "version": "8.19.3",
   "minimum_version": "8.4.0",
   "architecture": "amd64",
-  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v8.19.2/ARKhives_8.19.2_AMD64.arkenpatch",
-  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v8.19.2",
-  "sha256": "ec8ee471197d9b6dfde3bcdbb9dd66fd8fdf0e7cc948ecc58deb5e87b7ca0fff",
-  "notes": "# ARKhives 8.19.2\n\n- Sends new desktop MCQ and flashcard results to cloud sync as soon as they are saved.\n- Rechecks cloud progress when mobile returns online or to the foreground, and offers a non-destructive Sync now action.\n- Shows copy comparison only when automatic merge finds a conflict.\n- Verifies that the cloud accepts the study engine before publishing desktop updates.\n",
+  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v8.19.3/ARKhives_8.19.3_AMD64.arkenpatch",
+  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v8.19.3",
+  "sha256": "e70ecfbe6e4d5ad03fd18628945a6bbb8df823055af27ac6e7b410d42be17fdc",
+  "notes": "# ARKhives 8.19.3\n\n- Aligns reviewer mode panels even when reviewer titles wrap.\n- Uses the reviewer’s own accent color for the MCQ and flashcard artwork, titles and controls.\n- Centers the four mobile study tabs across the available width, with equal spacing and safe-area padding.\n",
   "engine_id": "1421064be7ba9a4e0e2b6c0da98bd7f660fdc2382f45f8e7a0bb5ecfdc69b53b",
   "progress_protocol": 1
 }
