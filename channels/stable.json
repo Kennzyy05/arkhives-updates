@@ -2,13 +2,13 @@
   "schema": 1,
   "channel": "stable",
   "available": true,
-  "version": "8.19.5",
+  "version": "8.19.6",
   "minimum_version": "8.4.0",
   "architecture": "amd64",
-  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v8.19.5/ARKhives_8.19.5_AMD64.arkenpatch",
-  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v8.19.5",
-  "sha256": "5afd4f077f4c4a5586136b70ce337ef2ebf27728b66b673e2f19325fab8fb73e",
-  "notes": "# ARKhives 8.19.5\n\nThe main desktop workspaces now align to the same content grid. Page headings, toolbars and panels use shared spacing and surfaces.\n\n- The dashboard reflows without cutting off the cards when the window gets narrower.\n- The desktop header gives the optional player its own space.\n- Reviewer search, display options and Smart practice sit on the same grid as the cards.\n- Admin navigation, account filters and the account table align with the rest of the workspace.\n- Settings, Analytics, Profile and Achievements use a consistent treatment for tabs and panels.\n- Desktop and mobile use the original reviewer icons, including Plumbing, Building Utilities and Structural.\r\n",
+  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v8.19.6/ARKhives_8.19.6_AMD64.arkenpatch",
+  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v8.19.6",
+  "sha256": "9b2cf5058023172e466fec19fcb4be9d53247ba761c2f98c655f0f7ec3a1750f",
+  "notes": "# ARKhives 8.19.6\n\n- Reviewer List view uses aligned columns for the subject, study actions, and mastery. Narrower windows stack the subject above the study controls.\n- Reviewer Grid view has consistent heading space and shorter cards that allow rows of subjects to align.\n- Reviewer detail pages show only the available study modes. Flashcard-only reviewers open their details and offer flashcard study.\n- Analytics tabs stay below the actual header on narrower desktop windows. Switching workspaces opens the next page at the top.\n- Study Planner and Study Library use the workspace spacing and panel styles.\r\n- The desktop question map aligns with the study panels, and the latest guidance button is clear of ArkBot.\r\n",
   "engine_id": "4a183ecc6d5678fda81227f8aa2ad3ff3dde0c16791859c0d35d00b79e48be3b",
   "progress_protocol": 1
 }
