@@ -2,13 +2,13 @@
   "schema": 1,
   "channel": "stable",
   "available": true,
-  "version": "8.19.7",
+  "version": "8.19.8",
   "minimum_version": "8.4.0",
   "architecture": "amd64",
-  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v8.19.7/ARKhives_8.19.7_AMD64.arkenpatch",
-  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v8.19.7",
-  "sha256": "41cfd7f85b89eb010fb1c357236cf29c8223c389256dbb633ffdfe1775719b77",
-  "notes": "# ARKhives 8.19.7\n\n- Study Mode gives a preloaded Optional Related Insight priority when you answer. Desktop and mobile reuse the existing request and can check it immediately when its priority changes.\n- Mobile starts checking text and image insight jobs immediately after they are accepted. Saved insights still appear as soon as they are available.\n- Learning & sync shows Gemini processing time and time spent on the queue, media and network for fresh insights recorded in the current session.\n",
+  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v8.19.8/ARKhives_8.19.8_AMD64.arkenpatch",
+  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v8.19.8",
+  "sha256": "074bd08fc1165aed317c2a1c73f6244008b7897fc5be9d050b5ebb82fb95270b",
+  "notes": "ARKhives 8.19.8 improves the desktop video lesson and document notebook workspace.\n\n- Balanced view starts with 45% source and 55% notebook. Saved layouts, focus modes and divider positions remain personal to each source.\n- Source headings, playback and capture actions stay compact while chapters, transcripts, document pages and the notebook scroll independently.\n- Timestamp links, selected source passages and frame/page captures insert at the notebook cursor with source references.\n- The notebook assistant explains, summarizes, compares or creates recall questions from selected text and the current source context. Suggestions appear in a preview before insertion.\n- Choose the bundled ONLYOFFICE editor or Microsoft Word when installed on Windows. Word runs in a linked native window that follows the notebook area and preserves its own ribbon. It requires an existing licensed installation; it is not embedded in a browser frame.\n- Both editors save the same canonical DOCX notebook through account-scoped local saves, revisions and draft recovery. Word source links return to the matching lesson timestamp or document page/section.\n- Local source files and the learning engine remain unchanged. AI requests use the existing signed-in ARKhives connection. Lesson notebooks are desktop-only.\n",
   "engine_id": "1f8774aacdfb37de7ba43d5f33994ce21ba80effc4591a5bab64c3046ea517cf",
   "progress_protocol": 1
 }
