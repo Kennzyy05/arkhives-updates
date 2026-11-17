@@ -2,13 +2,13 @@
   "schema": 1,
   "channel": "stable",
   "available": true,
-  "version": "8.19.4",
+  "version": "8.19.5",
   "minimum_version": "8.4.0",
   "architecture": "amd64",
-  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v8.19.4/ARKhives_8.19.4_AMD64.arkenpatch",
-  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v8.19.4",
-  "sha256": "ee76d6331cb8a6598d693d378048cc2cd7ce6f4e5b72599353f06c51253dffa1",
-  "notes": "# ARKhives 8.19.4\n\n- The dashboard uses particles and gives Today’s review, Resume, and sync status consistent placement on desktop and mobile.\n- Study bank search finds published MCQs and flashcards across reviewers. Open a reviewer to see MCQ accuracy by topic and practice that topic.\n- Reviewer colors now carry through to MCQ and flashcard art. Titles and settings controls fit their own columns.\n- Flashcards support multiple images with paging, touch gestures, and zoom. The answer and recall controls stay reachable on small screens.\n- AI preloads use background capacity. Direct requests get foreground priority, and Learning & Sync shows current-session timing, cache, and quota information.\r\n",
+  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v8.19.5/ARKhives_8.19.5_AMD64.arkenpatch",
+  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v8.19.5",
+  "sha256": "5afd4f077f4c4a5586136b70ce337ef2ebf27728b66b673e2f19325fab8fb73e",
+  "notes": "# ARKhives 8.19.5\n\nThe main desktop workspaces now align to the same content grid. Page headings, toolbars and panels use shared spacing and surfaces.\n\n- The dashboard reflows without cutting off the cards when the window gets narrower.\n- The desktop header gives the optional player its own space.\n- Reviewer search, display options and Smart practice sit on the same grid as the cards.\n- Admin navigation, account filters and the account table align with the rest of the workspace.\n- Settings, Analytics, Profile and Achievements use a consistent treatment for tabs and panels.\n- Desktop and mobile use the original reviewer icons, including Plumbing, Building Utilities and Structural.\r\n",
   "engine_id": "4a183ecc6d5678fda81227f8aa2ad3ff3dde0c16791859c0d35d00b79e48be3b",
   "progress_protocol": 1
 }
