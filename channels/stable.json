@@ -2,13 +2,13 @@
   "schema": 1,
   "channel": "stable",
   "available": true,
-  "version": "8.19.10",
+  "version": "8.19.11",
   "minimum_version": "8.4.0",
   "architecture": "amd64",
-  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v8.19.10/ARKhives_8.19.10_AMD64.arkenpatch",
-  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v8.19.10",
-  "sha256": "0afe305f7aae9992d4d240d5da833aa49c1070fe60a47460e0dc9e1a5cc0f7be",
-  "notes": "ARKhives 8.19.10\n\n- Fix the disappearing sidebar and top bar after leaving a lesson: queued editor/status updates can no longer reopen a closed or inactive lesson shell.\n- Restrict immersive styling to an active lesson, so a stale layout flag cannot hide navigation on Dashboard or Study Library.\n- Restore the original ARKhives brand artwork in the lesson header.\n- Use the shared ARKhives colors and typography in the desktop lesson workspace. Keep capture actions separate from chapter navigation at narrower desktop widths.\n- Simplify desktop page introductions and standardize tabs, notebook-card spacing and action alignment.\n- Preserve the independent mobile interface, shared learning engine, question banks, notes and personal progress.\n\nValidation includes the native/shared-engine suite, editor lifecycle regression tests, real bundled ONLYOFFICE navigation and DOCX-save checks, five lesson window widths including 826 px, and 39 desktop page/layout checks.\n",
+  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v8.19.11/ARKhives_8.19.11_AMD64.arkenpatch",
+  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v8.19.11",
+  "sha256": "07e00e3542625d79490f4c65f53b6ebd3f7b1ee1757d75b8cbd3e253eebb01c3",
+  "notes": "ARKhives 8.19.11\n\n- Keep Video Lessons and Documents in one consistent workspace. Closing the final notebook returns to the unified Study Library rather than the legacy library.\n- Rebuild the lesson canvas safely when the same source is reopened, preserving access to navigation and notebook tools.\n- Route source-type tabs, recovered notebooks and Word source links through the same navigation flow. Cancel delayed navigation after account or destination changes.\n- Move bulk source organization and notebook recovery into a focused library dialog. Preserve revision checks, source files and linked notes.\n- Remove the extra navigation gutter in narrow desktop windows.\n- Eliminate repeated construction of the syllabus text normalizer. A read-only profile of the same local bank reduced board-analysis time from 42.69 seconds to 4.73 seconds.\n- Preserve question banks, personal progress, notebooks, the original ARKhives branding and the independent mobile interface.\n\nValidation covers same-source reopening, final-notebook closure, both source-type tab paths, revision-guarded organization, independent scrolling, native ONLYOFFICE DOCX saves and AI preview insertion, Word source links, desktop layouts and native/mobile engine parity. AI provider responses in browser acceptance are synthetic; live AI service availability is a separate check.\n",
   "engine_id": "1f8774aacdfb37de7ba43d5f33994ce21ba80effc4591a5bab64c3046ea517cf",
   "progress_protocol": 1
 }
