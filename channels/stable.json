@@ -2,13 +2,13 @@
   "schema": 1,
   "channel": "stable",
   "available": true,
-  "version": "8.19.13",
+  "version": "8.19.14",
   "minimum_version": "8.4.0",
   "architecture": "amd64",
-  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v8.19.13/ARKhives_8.19.13_AMD64.arkenpatch",
-  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v8.19.13",
-  "sha256": "f17909060cb288e518efa48df9e34f7533b9bbe48c8f7b2b72a46b599c50c160",
-  "notes": "ARKhives 8.19.13 — Video playback and workspace recovery\n\n- Fix long MP4 recordings remaining at 00:00 while the browser scans thousands of media-data boxes. Compatible recordings receive a read-only streaming view; original recordings, sample positions and timestamps remain intact.\n- Avoid rereading notebook bodies and recalculating file fingerprints for every video range request. Source access remains account-authorized, and changed, removed or relinked files invalidate the cached metadata.\n- Replace the loading strip with the original animated ARKhives login symbol, centered inside the video pane. Brief seeks avoid flashing a loader, and extended buffering exposes recovery actions.\n- Retry playback restores position, speed and sound, then starts playback. Missing files, changed recordings and expired access receive clearer messages.\n- Reopening the active lesson retains its player and notebook. Leaving a lesson releases its media stream. Scrubbing avoids excessive seek requests and repeated control redraws.\n- Refine transitions and control feedback while respecting reduced motion. Desktop lesson presentation remains independent of mobile presentation; the shared learning engine is unchanged.\n\nThe signed update preserves local question banks, progress, notebooks and recordings. Lessons are not uploaded by this patch.\n",
+  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v8.19.14/ARKhives_8.19.14_AMD64.arkenpatch",
+  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v8.19.14",
+  "sha256": "085ae72d08b7eb7214f37a37011267781fda62e26c5dd2b80d4303693687724c",
+  "notes": "ARKhives 8.19.14\n\n- Repair native notebook source-link navigation and timestamp insertion beside an existing link.\n- Style new linked selections as editable bold red headings with a soft tinted background; timestamp badges remain secondary.\n- Clear stale notebook page painting on zoom, resize and display-scale changes.\n- Avoid redundant native zoom, ribbon and focus redraws; reduce repeated progress-label updates.\n- Open the embedded office archive without making a second copy of its roughly 188 MiB compressed payload.\n- Reuse the document converter through short study pauses, releasing it after three idle minutes or when its editor closes.\n- Space automatic DOCX exports to 15 seconds of idle time with a 60-second continuous-edit checkpoint. Explicit saves and navigation continue to save immediately.\n- Enlarge and center the animated ARKhives video loading logo, including its visible SVG rather than just its wrapper.\n- Add a visible Chapter action beside lesson navigation and an option to create a chapter from selected notebook text.\n- Preserve independent mobile presentation and the coordinated learning/sync contract.\n\nLocal notebooks, question banks, recording files and study progress are retained. Existing hand-formatted notebook links are not bulk reformatted.\n",
   "engine_id": "1f8774aacdfb37de7ba43d5f33994ce21ba80effc4591a5bab64c3046ea517cf",
   "progress_protocol": 1
 }
