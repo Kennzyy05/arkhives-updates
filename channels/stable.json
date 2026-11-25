@@ -2,13 +2,13 @@
   "schema": 1,
   "channel": "stable",
   "available": true,
-  "version": "8.19.14",
+  "version": "8.19.15",
   "minimum_version": "8.4.0",
   "architecture": "amd64",
-  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v8.19.14/ARKhives_8.19.14_AMD64.arkenpatch",
-  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v8.19.14",
-  "sha256": "085ae72d08b7eb7214f37a37011267781fda62e26c5dd2b80d4303693687724c",
-  "notes": "ARKhives 8.19.14\n\n- Repair native notebook source-link navigation and timestamp insertion beside an existing link.\n- Style new linked selections as editable bold red headings with a soft tinted background; timestamp badges remain secondary.\n- Clear stale notebook page painting on zoom, resize and display-scale changes.\n- Avoid redundant native zoom, ribbon and focus redraws; reduce repeated progress-label updates.\n- Open the embedded office archive without making a second copy of its roughly 188 MiB compressed payload.\n- Reuse the document converter through short study pauses, releasing it after three idle minutes or when its editor closes.\n- Space automatic DOCX exports to 15 seconds of idle time with a 60-second continuous-edit checkpoint. Explicit saves and navigation continue to save immediately.\n- Enlarge and center the animated ARKhives video loading logo, including its visible SVG rather than just its wrapper.\n- Add a visible Chapter action beside lesson navigation and an option to create a chapter from selected notebook text.\n- Preserve independent mobile presentation and the coordinated learning/sync contract.\n\nLocal notebooks, question banks, recording files and study progress are retained. Existing hand-formatted notebook links are not bulk reformatted.\n",
+  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v8.19.15/ARKhives_8.19.15_AMD64.arkenpatch",
+  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v8.19.15",
+  "sha256": "34e9f670de42b6110e9f1fc8bfe2fedb80a604d54c395386b3ae2111b4847e38",
+  "notes": "ARKhives 8.19.15\n\n- Timestamp picture links survive saving and reopening DOCX notebooks. A normal click returns to the source; text links remain editable with Ctrl+click navigation.\n- Divider dragging updates once per frame and postpones the expensive native notebook resize until release. Playback, the editor, selection and scroll stay in the same session.\n- Replaced ambiguous dot controls with labeled Layout and Tools menus, with one menu open at a time and predictable Escape/outside-click behavior.\n- Added subtle menu and lesson-tab transitions, pressed feedback and a divider percentage indicator. Reduced-motion settings remain respected.\n- Kept the original ARKhives branding, pane-local loading animation, lesson captures, notes, progress and shared desktop/mobile learning compatibility.\n",
   "engine_id": "1f8774aacdfb37de7ba43d5f33994ce21ba80effc4591a5bab64c3046ea517cf",
   "progress_protocol": 1
 }
