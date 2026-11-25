@@ -2,13 +2,13 @@
   "schema": 1,
   "channel": "stable",
   "available": true,
-  "version": "8.19.15",
+  "version": "8.20.0",
   "minimum_version": "8.4.0",
   "architecture": "amd64",
-  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v8.19.15/ARKhives_8.19.15_AMD64.arkenpatch",
-  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v8.19.15",
-  "sha256": "34e9f670de42b6110e9f1fc8bfe2fedb80a604d54c395386b3ae2111b4847e38",
-  "notes": "ARKhives 8.19.15\n\n- Timestamp picture links survive saving and reopening DOCX notebooks. A normal click returns to the source; text links remain editable with Ctrl+click navigation.\n- Divider dragging updates once per frame and postpones the expensive native notebook resize until release. Playback, the editor, selection and scroll stay in the same session.\n- Replaced ambiguous dot controls with labeled Layout and Tools menus, with one menu open at a time and predictable Escape/outside-click behavior.\n- Added subtle menu and lesson-tab transitions, pressed feedback and a divider percentage indicator. Reduced-motion settings remain respected.\n- Kept the original ARKhives branding, pane-local loading animation, lesson captures, notes, progress and shared desktop/mobile learning compatibility.\n",
+  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v8.20.0/ARKhives_8.20.0_AMD64.arkenpatch",
+  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v8.20.0",
+  "sha256": "072be62ca95bc9a0c37c81e3a0d023525a62fb99be6d9c17f2c8829f6fad70f5",
+  "notes": "# ARKhives 8.20.0\n\nMy Reviewers opens in Overview: a full subject preview with existing icons, matching subject colors, MCQ and flashcard slides, combined mastery, due reviews, new cards, unseen MCQs and repair counts. Select the subject header to search, filter and sort subjects. Grid remains available. Both desktop and mobile keep their own layouts and use the existing study setup and learning data.\n\nDesktop lesson tools add a private capture tray, comparison of two captures, structured notebook templates, purposeful bookmarks, editable source-based personal practice, saved workspace arrangements, link health checks, return-to-note navigation, local timing diagnostics and session recaps. The notebook drawer groups notebook actions, editing settings and recovery tools. Source-aware AI previews identify the material supplied before insertion.\n\nMotion respects reduced-motion settings. Study-mode slides have an explicit pause control. Private lesson material stays in the personal desktop library; personal practice does not alter published question banks or official review scheduling.\r\n",
   "engine_id": "1f8774aacdfb37de7ba43d5f33994ce21ba80effc4591a5bab64c3046ea517cf",
   "progress_protocol": 1
 }
