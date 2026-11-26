@@ -2,13 +2,13 @@
   "schema": 1,
   "channel": "stable",
   "available": true,
-  "version": "8.21.2",
+  "version": "8.21.3",
   "minimum_version": "8.4.0",
   "architecture": "amd64",
-  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v8.21.2/ARKhives_8.21.2_AMD64.arkenpatch",
-  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v8.21.2",
-  "sha256": "fc48e3e4845421ca368abe3bfb3da682c80136436f4a2c477a7d45c7a3dfc012",
-  "notes": "# ARKhives 8.21.2\n\nTiko's complete supplied animation rig remains intact. Animation previews now appear inside the settings window, with the full motion catalog, facial expressions and idle gestures available to explore.\n\nThe original neutral resting face restores round blinking eyes. A permanent happy-eye mask no longer overlaps thinking, winking or dizzy spiral eyes. Phone feeds fade through a shallow translucent glass layer behind Tiko instead of meeting a hard edge; dark and light themes stay readable.\n\nGreetings finish before the thinking cue. Thinking and explanation loops return to the original lively idle gestures. Three distinct correct answers trigger the supplied streak celebration; retries and revisiting an answer do not inflate it. Interrupted reactions cannot play an old explanation over a new question.\n\nRemembered companion sounds reconnect on the first tap or keypress after reopening. A visible sound test both enables sounds and plays a sample. Explicit mute settings remain respected, as do reduced-motion preferences.\n\nThe latest supplied sound pack is included. Its audio switch now initializes the complete output chain, fixing a silent-playback defect in the supplied revision. Original source files remain untouched.\n\nThese are presentation changes shared by desktop and mobile. Answers, saved explanations, question banks, personal progress and learning schedules are preserved. ARKdaily reactions continue to have no effect on study ratings or progress.\n",
+  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v8.21.3/ARKhives_8.21.3_AMD64.arkenpatch",
+  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v8.21.3",
+  "sha256": "620c6b620db1cccb87cb461bfa89ef0bae6d4e912fdb5d97fadc28f8e8cb1a42",
+  "notes": "# ARKhives 8.21.3\n\nTiko uses the newest supplied ARKbot_Animated artwork, logo and animation engine without changing their code. The integration adds the Tiko greeting, full motion and enabled sound, with browser audio activated on the first tap. The supplied expressions, sound styles, skins and accessories are available in Tiko settings.\n\nARKdaily gives Tiko more room by removing the companion heading and bookmark row, moving him upward and using a more translucent glass fade. Daily source/report buttons are removed. Existing saved Daily posts remain available from Tiko settings.\n\nQuestion choices, answer panels and speech bubbles follow the supplied quiz styling in dark and light mode. Hints appear only when the item already has a hint; the feature does not generate new hints or reveal answers as hints. Rapid user scrolling triggers the existing dizzy animation with a cooldown, while ordinary scrolling and answer feedback keep their normal behavior.\n\nQuestion banks, explanations, images, notes and study scheduling are preserved. Daily interactions continue to have no effect on study progress or FSRS ratings.\n",
   "engine_id": "1f8774aacdfb37de7ba43d5f33994ce21ba80effc4591a5bab64c3046ea517cf",
   "progress_protocol": 1
 }
