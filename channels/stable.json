@@ -2,13 +2,13 @@
   "schema": 1,
   "channel": "stable",
   "available": true,
-  "version": "8.21.3",
+  "version": "8.21.4",
   "minimum_version": "8.4.0",
   "architecture": "amd64",
-  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v8.21.3/ARKhives_8.21.3_AMD64.arkenpatch",
-  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v8.21.3",
-  "sha256": "620c6b620db1cccb87cb461bfa89ef0bae6d4e912fdb5d97fadc28f8e8cb1a42",
-  "notes": "# ARKhives 8.21.3\n\nTiko uses the newest supplied ARKbot_Animated artwork, logo and animation engine without changing their code. The integration adds the Tiko greeting, full motion and enabled sound, with browser audio activated on the first tap. The supplied expressions, sound styles, skins and accessories are available in Tiko settings.\n\nARKdaily gives Tiko more room by removing the companion heading and bookmark row, moving him upward and using a more translucent glass fade. Daily source/report buttons are removed. Existing saved Daily posts remain available from Tiko settings.\n\nQuestion choices, answer panels and speech bubbles follow the supplied quiz styling in dark and light mode. Hints appear only when the item already has a hint; the feature does not generate new hints or reveal answers as hints. Rapid user scrolling triggers the existing dizzy animation with a cooldown, while ordinary scrolling and answer feedback keep their normal behavior.\n\nQuestion banks, explanations, images, notes and study scheduling are preserved. Daily interactions continue to have no effect on study progress or FSRS ratings.\n",
+  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v8.21.4/ARKhives_8.21.4_AMD64.arkenpatch",
+  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v8.21.4",
+  "sha256": "8561d741da2ecd4f33b9ca9b80e6a9c5659ccc2518f5f43cb9ef9d5b0532b1a1",
+  "notes": "# ARKhives 8.21.4\n\nARKdaily now mixes recall posts from Famous Buildings, Philippine Historical Churches and Visual Dictionary into its randomized feed. Dedicated recall slots and collection rotation prevent large MCQ explanation banks from crowding them out. MCQs and quick facts remain in the mix.\n\nVisual Dictionary is stored as MCQs. Daily presents its existing question, mapped image and keyed answer as a tap-to-reveal recall view, without converting the study bank or changing progress. Famous Buildings and church cards retain their front/back text and images.\n\nSubject data loads in a small bounded batch and is cached for reuse instead of fetching per card. Rendered questions do not repeat, and changing accounts clears the discovery pools. Unpublished, retired and quarantined content is excluded.\n\nThe supplied Tiko engine, motion, sound, glass styling and existing-hint behavior from 8.21.3 are preserved. Daily still awards no FSRS ratings or study credit.\n",
   "engine_id": "1f8774aacdfb37de7ba43d5f33994ce21ba80effc4591a5bab64c3046ea517cf",
   "progress_protocol": 1
 }
