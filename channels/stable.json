@@ -2,13 +2,13 @@
   "schema": 1,
   "channel": "stable",
   "available": true,
-  "version": "8.21.6",
+  "version": "8.21.7",
   "minimum_version": "8.4.0",
   "architecture": "amd64",
-  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v8.21.6/ARKhives_8.21.6_AMD64.arkenpatch",
-  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v8.21.6",
-  "sha256": "6bd10edce0fa92c95af2f3dab2aaea9316d5583921965d29a3695c998342bb27",
-  "notes": "# ARKhives 8.21.6\n\nTiko now uses the supplied 2.4.0 engine: 50 animations, 68 sounds and 257 lines, with varied answer reactions, round blinking eyes, touch gestures and layered headwear/glasses. Full motion and sound remain enabled; browser audio begins after a tap.\n\nMaster Admin can choose or drop a `.bot` file in Tiko settings, check its integrity and animations, install it live, publish it to other devices or restore the previous bot. Bot code runs in an isolated frame with no access to accounts, notebooks, questions or study progress. Invalid files and storage failures retain the previous bot.\n\nDaily uses the supplied hints only on matching questions. Tapping Hint plays the hint reaction and shows the supplied text. This release also repairs the native desktop route for the hint catalog.\n\nThe learning engine, question banks, notes and personal progress are preserved.\n\nAI insight recovery: unchanged, account-owned cached insights can be reused beyond seven days and across AI routing updates. Turning off preloading still retrieves saved insights without starting a generation. Saved content stays readable during a refresh, Load/Try again retrieves the existing response first, and slow requests stop with a useful retry message. Mobile retains successful guidance in its encrypted per-account cache for offline use.\n",
+  "patch_url": "https://github.com/Kennzyy05/arkhives-updates/releases/download/v8.21.7/ARKhives_8.21.7_AMD64.arkenpatch",
+  "release_page": "https://github.com/Kennzyy05/arkhives-updates/releases/tag/v8.21.7",
+  "sha256": "04b6ede0e60115d9ab7c3dacddbc844bd66db3f966cab8fbb34e0e27a66b8e86",
+  "notes": "ARKhives 8.21.7\n\n- Keeps Tiko’s frame transparent in dark and light themes, including after a theme switch.\n- Fills question numbers from the current study session. ARKdaily uses a natural prompt without a misleading total; unfinished dialogue placeholders never appear.\n- Requires sustained, very fast scrolling for the dizzy reaction and spaces those reactions at least twenty seconds apart.\n- Preserves the supplied Tiko package, animations, sound, question banks, notebooks, and study progress.\n",
   "engine_id": "3fb42f21e4ae60ee16be0c221466ac270c21a73eb54efb6b9480511d1d340edb",
   "progress_protocol": 1
 }
